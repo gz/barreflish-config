@@ -57,3 +57,4 @@
 -I/home/gz/workspace/barrelfish-tup/build-x86_64/bf/devices
 -I/home/gz/workspace/barrelfish-tup/bf/lib/newlib/newlib/libc/include/
 -I/home/gz/workspace/barrelfish-tup/bf/lib/newlib/newlib/libc/
+-imacros /home/gz/workspace/barrelfish-tup/bf/include/deputy/nodeputy.h"
