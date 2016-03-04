@@ -1,0 +1,3 @@
+-I/home/gz/workspace/barrelfish-tup/bf/kernel/include/
+-I/home/gz/workspace/barrelfish-tup/bf/kernel/include/arch/x86_64/
+-I/home/gz/workspace/barrelfish-tup/bf/kernel/include/target/x86_64/
