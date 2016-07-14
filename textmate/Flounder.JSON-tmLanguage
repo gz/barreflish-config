@@ -1,0 +1,104 @@
+{ "name": "Flounder",
+  "scopeName": "flounder",
+  "fileTypes": ["if"],
+  "patterns": [
+        { "begin": "(interface)\\s+([A-z_]+[0-9]*)\\s+(\".*\")\\s+{",
+          "beginCaptures": {
+              "1": { "name": "keyword.control.flounder" },
+              "2": { "name": "entity.name.function.flounder" },
+              "3": { "name": "string.quoted.double.flounder" }
+          },
+          "patterns": [
+            { "begin": "(rpc|message|call|response)\\s+([A-z_0-9]+)\\s*\\(",
+              "beginCaptures": {
+                "1": { "name": "keyword.control.flounder" },
+                "2": { "name": "entity.name.function.flounder" }
+              },
+              "patterns": [
+                { 
+                  "match": "\\s*((in\\s+|out\\s+){0,1})\\s*([A-z_]+[0-9]*)\\s+([\\w_0-9]+)(\\[([A-z_0-9]+)\\]){0,1}\\s*,{0,1}*",
+                  "name": "meta.arguments.flounder",
+                  "captures": {
+                      "2": { "name": "storage.modifier" },
+                      "3": { "name": "support.type" },
+                      "4": { "name": "variable.parameter" },
+                      "6": { "name": "meta.array.length.flounder" }
+                  }
+                },
+                { "include": "#commentblock" },
+                { "include": "#commentline" }
+              ],
+
+              "end": "\\)",
+              "name": "meta.function.flounder"
+            },
+
+            { "begin": "(typedef)\\s+([A-z_0-9]+)\\s+\\{{0,1}",
+              "beginCaptures": {
+                "1": { "name": "keyword.control.flounder" },
+                "2": { "name": "support.type" }
+              },
+              "patterns": [
+                { 
+                  "match": "([A-z_0-9]+)\\s+([A-z_0-9]+);",
+                  "name": "meta.struct.entries.flounder",
+                  "captures": {
+                    "1": {"name": "support.type"},
+                    "2": {"name": "meta.struct.name.flounder"}
+                  }
+                },
+                { "include": "#commentblock" },
+                { "include": "#commentline" }
+              ],
+              "end": ";",
+              "name": "meta.typedef.flounder"
+            },
+
+            { "match": "(alias)\\s+([A-z_0-9]+)\\s+([A-z_0-9]+)\\s*;",
+              "captures": {
+                "1": { "name": "keyword.control.flounder" },
+                "2": { "name": "support.type" }
+              },
+              "name": "meta.alias.flounder"
+            },
+
+            { "include": "#commentblock" },
+            { "include": "#commentline" }
+          ],
+          "end": "}",
+          "name": "meta.interface.flounder"
+        },
+
+        { "include": "#commentblock" },
+        { "include": "#commentline" }
+    ],
+
+  "repository": {
+    "commentblock": {
+      "begin":  "/\\*",
+      "end":    "\\*/",
+      "name":   "comment.block.flounder",
+      "patterns": [
+        { "include": "$self" }
+      ]
+    },
+    "string": { "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.flounder"
+        },
+    "commentline": { "match": "//.*",
+          "name": "comment.line.flounder"
+        },
+    "constant_binary": { "match": "\\b(0b[0-1]+)",
+          "name": "constant.numeric.integer.binary.flounder"
+        },
+    "constant_hex":    { "match": "\\b(?i:(0x\\h*))",
+          "name": "constant.numeric.integer.hexadecimal.flounder"
+        },
+    "constant_decimal":    { "match": "\\b([1-9]+[0-9]*|0)",
+          "name": "constant.numeric.integer.decimal.flounder"
+        }
+  },
+
+  "uuid": "945ed672-7a74-4ecf-8719-e13cc63ccdc3"
+}

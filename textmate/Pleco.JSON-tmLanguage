@@ -1,0 +1,21 @@
+{ "name": "Pleco",
+  "scopeName": "pleco",
+  "fileTypes": ["pleco"],
+  "patterns": [
+        { "match": "subsystem|event",
+          "name": "keyword.control.pleco"
+        },
+        { "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.pleco"
+        },
+        { "begin": "/\\*",
+          "end": "\\*/",
+          "name": "comment.block.pleco"
+        },
+        { "match": "//.*",
+          "name": "comment.line.pleco"
+        }
+    ],
+  "uuid": "caba87e5-9c79-4d69-a319-73998d601efe"
+}

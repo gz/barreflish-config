@@ -1,0 +1,52 @@
+{ "name": "Mackerel",
+  "scopeName": "mackerel",
+  "fileTypes": ["dev"],
+  "patterns": [
+        { "match": "device|regtype|register|constants|space|datatype|regarray",
+          "name": "keyword.control.mackerel"
+        },
+        { "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.mackerel"
+        },
+        { "begin": "/\\*",
+          "end": "\\*/",
+          "name": "comment.block.mackerel"
+        },
+        { "match": "//.*",
+          "name": "comment.line.mackerel"
+        },
+        { "match": "\\b(0b[0-1]+)",
+          "name": "constant.numeric.integer.binary.mackerel"
+        },
+        { "match": "\\b(?i:(0x\\h*))",
+          "name": "constant.numeric.integer.hexadecimal.mackerel"
+        },
+        { "match": "\\b([1-9]+[0-9]*|0)",
+          "name": "constant.numeric.integer.decimal.mackerel"
+        },
+        {   "match": "type\\(([A-z0-9_]+)\\)",
+            "captures": {
+                "1": { "name": "variable.parameter.mackerel" }
+            },
+            "name": "support.function.mackerel"
+        },
+        {   "match": "width\\(([0-9]+)\\)",
+            "captures": {
+                "1": { "name": "constant.numeric.mackerel" }
+            },
+            "name": "support.function.mackerel"
+        },
+        {   "match": "addr\\(([A-z0-9_]+), ([A-z0-9_]+)\\)",
+            "captures": {
+                "1": { "name": "variable.parameter.mackerel" },
+                "2": { "name": "constant.numeric.mackerel" }
+            },
+            "name": "support.function.mackerel"
+        },
+        {   "match": " ro | rw | wo",
+            "name": "entity.name.tag"
+        }
+  ],
+  "uuid": "f19xx972-704a-4d50-8e63-6dc4a707da40"
+}

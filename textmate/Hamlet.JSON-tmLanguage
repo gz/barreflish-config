@@ -1,0 +1,55 @@
+{ "name": "Hamlet",
+  "scopeName": "hamlet",
+  "fileTypes": ["hl"],
+  "patterns": [
+    { "match": "(define)\\s+([A-z_0-9]+)\\s+([A-z_0-9]+)\\s*;",
+      "captures": {
+        "1": { "name": "keyword.control.hamlet" },
+        "2": { "name": "support.type" }
+      },
+      "name": "meta.alias.flounder"
+    },
+    {
+      "begin": "(cap)\\s+([A-z_0-9]+)\\s+([A-z_0-9]+)\\s*\\{",
+      "beginCaptures": {
+        "1": {"name": "keyword.control.hamlet"},
+        "2": {"name": "support.type"}
+      },
+      "patterns": [
+  
+
+      ],
+      "end": "\\}",
+      "name": "meta.cap.hamlet"
+    },
+    { "include": "#commentblock" },
+    { "include": "#commentline" }
+  ],
+  "repository": {
+    "commentblock": {
+      "begin":  "/\\*",
+      "end":    "\\*/",
+      "name":   "comment.block.flounder",
+      "patterns": [
+        { "include": "$self" }
+      ]
+    },
+    "string": { "begin": "\"",
+          "end": "\"",
+          "name": "string.quoted.double.flounder"
+        },
+    "commentline": { "match": "//.*",
+          "name": "comment.line.flounder"
+        },
+    "constant_binary": { "match": "\\b(0b[0-1]+)",
+          "name": "constant.numeric.integer.binary.flounder"
+        },
+    "constant_hex":    { "match": "\\b(?i:(0x\\h*))",
+          "name": "constant.numeric.integer.hexadecimal.flounder"
+        },
+    "constant_decimal":    { "match": "\\b([1-9]+[0-9]*|0)",
+          "name": "constant.numeric.integer.decimal.flounder"
+        }
+  },
+  "uuid": "f76212bd-af6a-45a9-bc07-84987fbeb2a7"
+}
